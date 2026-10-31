@@ -16,9 +16,9 @@ const REST_ALTITUDE = 2.4;
 const FLY_MS = 1500;
 
 function capColor(country: DrawnCountry, selected: number | null, hover: number | null): string {
-  if (country.locId != null && country.locId === selected) return "rgba(169, 231, 255, 0.84)";
-  if (country.locId != null && country.locId === hover) return "rgba(169, 231, 255, 0.5)";
-  return "rgba(169, 231, 255, 0.22)";
+  if (country.locId != null && country.locId === selected) return "rgba(157, 255, 195, 0.84)";
+  if (country.locId != null && country.locId === hover) return "rgba(157, 255, 195, 0.5)";
+  return "rgba(157, 255, 195, 0.22)";
 }
 
 function capAltitude(country: DrawnCountry, selected: number | null, hover: number | null): number {
@@ -28,9 +28,9 @@ function capAltitude(country: DrawnCountry, selected: number | null, hover: numb
 }
 
 function strokeColor(country: DrawnCountry, selected: number | null, hover: number | null): string {
-  if (country.locId != null && country.locId === selected) return "#e8f7ff";
-  if (country.locId != null && country.locId === hover) return "rgba(169, 231, 255, 0.92)";
-  return "rgba(169, 231, 255, 0.4)";
+  if (country.locId != null && country.locId === selected) return "#e8fff2";
+  if (country.locId != null && country.locId === hover) return "rgba(157, 255, 195, 0.92)";
+  return "rgba(157, 255, 195, 0.4)";
 }
 
 function paintGlobe(globe: GlobeInstance, selected: number | null, hover: number | null) {
@@ -107,8 +107,8 @@ export function PopulationGlobe({
           emissive?: { set: (hex: string) => void };
           shininess?: number;
         };
-        material.color?.set("#0c1826");
-        material.emissive?.set("#061018");
+        material.color?.set("#0c1a16");
+        material.emissive?.set("#06140f");
         material.shininess = 8;
 
         globe
@@ -116,16 +116,16 @@ export function PopulationGlobe({
           .showGlobe(true)
           .showGraticules(false)
           .showAtmosphere(true)
-          .atmosphereColor("#a9e7ff")
+          .atmosphereColor("#9dffc3")
           .atmosphereAltitude(0.17)
           .polygonsData(drawn)
           .polygonGeoJsonGeometry(
             (country: object) =>
               (country as DrawnCountry).geometry as unknown as { type: string; coordinates: number[] },
           )
-          .polygonCapColor(() => "rgba(169, 231, 255, 0.22)")
-          .polygonSideColor(() => "rgba(7, 18, 28, 0.92)")
-          .polygonStrokeColor(() => "rgba(169, 231, 255, 0.4)")
+          .polygonCapColor(() => "rgba(157, 255, 195, 0.22)")
+          .polygonSideColor(() => "rgba(6, 20, 14, 0.92)")
+          .polygonStrokeColor(() => "rgba(157, 255, 195, 0.4)")
           .polygonAltitude(() => 0.007)
           .polygonsTransitionDuration(700)
           .polygonLabel(() => "")

@@ -51,37 +51,37 @@
 :root,
 .dark {
   --background: #070b12;
-  --foreground: #d7e2ea;
+  --foreground: #d7e2dc;
   --card: #0d1420;
-  --card-foreground: #d7e2ea;
+  --card-foreground: #d7e2dc;
   --popover: #0d1420;
-  --popover-foreground: #d7e2ea;
-  --primary: #a9e7ff;
-  --primary-foreground: #071820;
+  --popover-foreground: #d7e2dc;
+  --primary: #9dffc3;
+  --primary-foreground: #062014;
   --secondary: #121a26;
-  --secondary-foreground: #d7e2ea;
+  --secondary-foreground: #d7e2dc;
   --muted: #101820;
-  --muted-foreground: #8b96a3;
+  --muted-foreground: #8b9a93;
   --accent: #152033;
-  --accent-foreground: #e8f6ff;
+  --accent-foreground: #e8fff2;
   --destructive: #ffb4b4;
-  --border: rgba(169, 231, 255, 0.16);
-  --input: rgba(169, 231, 255, 0.28);
-  --ring: #a9e7ff;
-  --chart-1: #a9e7ff;
+  --border: rgba(157, 255, 195, 0.16);
+  --input: rgba(157, 255, 195, 0.28);
+  --ring: #9dffc3;
+  --chart-1: #9dffc3;
   --chart-2: #e7c98a;
   --chart-3: #9ec1ff;
   --chart-4: #8b9a93;
   --chart-5: #d7e2dc;
   --radius: 0.35rem;
   --sidebar: #0d1420;
-  --sidebar-foreground: #d7e2ea;
-  --sidebar-primary: #a9e7ff;
-  --sidebar-primary-foreground: #071820;
+  --sidebar-foreground: #d7e2dc;
+  --sidebar-primary: #9dffc3;
+  --sidebar-primary-foreground: #062014;
   --sidebar-accent: #152033;
-  --sidebar-accent-foreground: #e8f6ff;
-  --sidebar-border: rgba(169, 231, 255, 0.16);
-  --sidebar-ring: #a9e7ff;
+  --sidebar-accent-foreground: #e8fff2;
+  --sidebar-border: rgba(157, 255, 195, 0.16);
+  --sidebar-ring: #9dffc3;
   color-scheme: dark;
 }
 
@@ -95,7 +95,7 @@
   body {
     @apply bg-background text-foreground antialiased;
     background-image:
-      radial-gradient(900px 420px at 50% -10%, rgba(169, 231, 255, 0.08), transparent 55%),
+      radial-gradient(900px 420px at 50% -10%, rgba(157, 255, 195, 0.08), transparent 55%),
       linear-gradient(180deg, #070b12 0%, #05070d 100%);
     min-height: 100%;
   }
@@ -105,14 +105,14 @@
     position: fixed;
     inset: 0;
     background-image:
-      linear-gradient(rgba(169, 231, 255, 0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(169, 231, 255, 0.04) 1px, transparent 1px);
+      linear-gradient(rgba(157, 255, 195, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(157, 255, 195, 0.04) 1px, transparent 1px);
     background-size: 56px 56px;
     mask-image: radial-gradient(ellipse at 50% 15%, black, transparent 72%);
   }
   ::selection {
-    background: rgba(169, 231, 255, 0.28);
-    color: #f4fbff;
+    background: rgba(157, 255, 195, 0.28);
+    color: #f4fff8;
   }
 }
 

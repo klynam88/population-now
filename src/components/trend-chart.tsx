@@ -140,7 +140,7 @@ export function TrendChart({
           >
             projections
           </text>
-          <path d={line(estimate, "un")} fill="none" stroke="#a9e7ff" strokeWidth="2" />
+          <path d={line(estimate, "un")} fill="none" stroke="#9dffc3" strokeWidth="2" />
           <path
             d={line(projection, "un")}
             fill="none"
@@ -158,7 +158,7 @@ export function TrendChart({
                 y2={HEIGHT - PAD.bottom}
                 stroke="rgba(215,226,220,0.45)"
               />
-              <circle cx={xFor(active.year)} cy={yFor(active.un)} r="3.5" fill="#f4fbff" />
+              <circle cx={xFor(active.year)} cy={yFor(active.un)} r="3.5" fill="#f4fff8" />
             </>
           ) : null}
           {xTicks.map((tick) => (
