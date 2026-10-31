@@ -2,6 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  transpilePackages: ["globe.gl", "three-globe", "three-render-objects"],
   async headers() {
     return [
       {

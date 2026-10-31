@@ -6,6 +6,8 @@ Population.Now is a terminal-style lookup for published population figures. Type
 
 It is not a live population clock. It does not invent city populations, and it does not fill gaps by interpolation.
 
+The globe on the home page spins until a country result arrives, then turns to that country. Drag rotates and tilts it. A click runs the same lookup as the terminal and keeps the year already in the query when there is one. Zoom stays off so the page can still scroll.
+
 ## What works in this release
 
 | Level | Coverage | Years | Source |

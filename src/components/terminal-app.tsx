@@ -1,5 +1,6 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { useEffect, useId, useMemo, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -7,6 +8,23 @@ import { ResultView } from "@/components/result-view";
 import { parseQuery } from "@/lib/parse-query";
 import { suggestPlaces, type Suggestion } from "@/lib/suggest";
 import type { LookupResponse } from "@/lib/types";
+
+const PopulationGlobe = dynamic(
+  () => import("@/components/population-globe").then((module) => module.PopulationGlobe),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="border border-border bg-[#070b12]/80">
+        <div className="flex h-[280px] items-center justify-center text-[11px] tracking-[0.16em] text-muted-foreground uppercase sm:h-[340px]">
+          Drawing the globe
+        </div>
+        <p className="border-t border-border px-3 py-2 text-[11px] text-muted-foreground">
+          Drag to turn · click a country
+        </p>
+      </div>
+    ),
+  },
+);
 
 const EXAMPLES = [
   "population Japan 2050",
@@ -153,9 +171,24 @@ export function TerminalApp({
     }
   }
 
+  const focus =
+    result?.status === "ok" && result.result.place.level === "country"
+      ? { locId: result.result.place.locId, name: result.result.place.name }
+      : {
+          locId: null,
+          name: result?.status === "ok" ? result.result.place.name : null,
+        };
+
+  function onGlobeSelect(place: { name: string; locId: number }) {
+    const parsed = parseQuery(query);
+    const next = parsed.year ? `population ${place.name} ${parsed.year}` : `population ${place.name} now`;
+    void run(next, `un:${place.locId}`);
+  }
+
   return (
-    <div className="mx-auto flex w-full max-w-5xl flex-col gap-8 px-4 py-8 sm:px-6 sm:py-12">
-      <section className="mx-auto w-full max-w-3xl">
+    <div className="mx-auto flex w-full max-w-6xl flex-col gap-8 px-4 py-8 sm:px-6 sm:py-12">
+      <section className="grid items-start gap-6 lg:grid-cols-[minmax(0,1fr)_340px] lg:gap-8">
+        <div className="min-w-0">
         <p className="text-[11px] tracking-[0.22em] text-primary uppercase">
           Records · 1950–2100
         </p>
@@ -167,9 +200,14 @@ export function TerminalApp({
           Ask for a country, a UN region, or the world, plus a year. Figures come from published
           estimates and projections. This is not a live population clock.
         </p>
+        </div>
 
+        <div className="lg:sticky lg:top-6 lg:row-span-2">
+          <PopulationGlobe focusLocId={focus.locId} focusName={focus.name} onSelect={onGlobeSelect} />
+        </div>
+
+        <div className="min-w-0">
         <form
-          className="mt-8"
           onSubmit={(event) => {
             event.preventDefault();
             void run(query);
@@ -274,6 +312,7 @@ export function TerminalApp({
             </div>
           </div>
         ) : null}
+        </div>
       </section>
 
       <section className="mx-auto w-full max-w-3xl" aria-live="polite">

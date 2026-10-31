@@ -36,6 +36,12 @@ export default function AboutPage() {
             If the World Bank has a later published estimate, that later year is used and labeled.
           </li>
           <li>A blank cross-check means that source did not publish the year. The blank is not filled.</li>
+          <li>
+            The globe turns to a country after that country is looked up. Dragging rotates and tilts
+            it. Clicking a country asks for that country, using the year already in the query when
+            one is there. Places with no polygon on the map, and regions, stay available from the
+            query line.
+          </li>
         </ul>
       </section>
 

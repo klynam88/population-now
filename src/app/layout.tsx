@@ -33,7 +33,7 @@ export default function RootLayout({
       <body>
         <div className="relative z-10 flex min-h-screen flex-col">
           <header className="border-b border-border/80">
-            <div className="mx-auto flex w-full max-w-5xl items-center justify-between gap-4 px-4 py-4 sm:px-6">
+            <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-4 py-4 sm:px-6">
               <Link href="/" className="text-sm tracking-[0.18em] text-foreground uppercase">
                 Population<span className="text-primary">.</span>Now
               </Link>
@@ -49,7 +49,7 @@ export default function RootLayout({
           </header>
           <main className="flex-1">{children}</main>
           <footer className="border-t border-border/80">
-            <div className="mx-auto flex w-full max-w-5xl flex-col gap-2 px-4 py-5 text-[11px] leading-5 text-muted-foreground sm:flex-row sm:items-center sm:justify-between sm:px-6">
+            <div className="mx-auto flex w-full max-w-6xl flex-col gap-2 px-4 py-5 text-[11px] leading-5 text-muted-foreground sm:flex-row sm:items-center sm:justify-between sm:px-6">
               <p>UN WPP 2024 · CC BY 3.0 IGO · World Bank WDI SP.POP.TOTL · CC BY 4.0</p>
               <p>Estimates and projections. Not a real-time count.</p>
             </div>
