@@ -8,6 +8,8 @@ It is not a live population clock. It does not invent city populations, and it d
 
 The globe on the home page spins until a country result arrives, then turns to that country. Drag rotates and tilts it. A click runs the same lookup as the terminal and keeps the year already in the query when there is one. Zoom stays off so the page can still scroll.
 
+A shared link uses a large preview image. The home page shows the wordmark and globe. A result link, such as `/q?q=population%20Japan%202050`, shows that place, year, and published figure. Older `/?q=` links still open the same result.
+
 ## What works in this release
 
 | Level | Coverage | Years | Source |

@@ -3,12 +3,28 @@ import Link from "next/link";
 import { gazetteer } from "@/lib/gazetteer";
 import { COVERAGE } from "@/lib/coverage";
 import { SOURCE_CATALOG } from "@/lib/sources/registry";
+import { OG_ALT, OG_HEIGHT, OG_WIDTH } from "@/lib/site";
 import { unDataset } from "@/lib/sources/un-wpp";
+
+const description =
+  "How Population.Now reads United Nations World Population Prospects 2024 and World Bank population estimates, and what it will not invent.";
 
 export const metadata: Metadata = {
   title: "About the data",
-  description:
-    "Sources, year ranges, and limits for Population.Now. United Nations World Population Prospects 2024 and World Bank SP.POP.TOTL.",
+  description,
+  alternates: { canonical: "/about" },
+  openGraph: {
+    title: "About the data · Population.Now",
+    description,
+    url: "/about",
+    images: [{ url: "/og", width: OG_WIDTH, height: OG_HEIGHT, alt: OG_ALT }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About the data · Population.Now",
+    description,
+    images: [{ url: "/og", width: OG_WIDTH, height: OG_HEIGHT, alt: OG_ALT }],
+  },
 };
 
 export default function AboutPage() {

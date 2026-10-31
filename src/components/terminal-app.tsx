@@ -107,7 +107,7 @@ export function TerminalApp({
       const body = (await response.json()) as LookupResponse;
       setResult(body);
       if (q) {
-        window.history.replaceState(null, "", `/?q=${encodeURIComponent(q)}`);
+        window.history.replaceState(null, "", `/q?q=${encodeURIComponent(q)}`);
         remember(q);
       }
     } catch {

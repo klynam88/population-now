@@ -1,6 +1,7 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist_Mono } from "next/font/google";
 import Link from "next/link";
+import { OG_ALT, OG_HEIGHT, OG_WIDTH, SITE_DESCRIPTION, SITE_NAME, SITE_TITLE, siteUrl } from "@/lib/site";
 import "./globals.css";
 
 const geistMono = Geist_Mono({
@@ -8,29 +9,67 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: {
-    default: "Population.Now",
-    template: "%s · Population.Now",
-  },
-  description:
-    "Past, present, and projected population for countries, UN regions, and the world. United Nations World Population Prospects 2024 and World Bank SP.POP.TOTL.",
-  applicationName: "Population.Now",
-  openGraph: {
-    title: "Population.Now",
-    description: "Past. Present. Future. Published population estimates and projections.",
-    type: "website",
-  },
+export async function generateMetadata(): Promise<Metadata> {
+  const origin = await siteUrl();
+  return {
+    metadataBase: origin,
+    title: {
+      default: SITE_TITLE,
+      template: "%s · Population.Now",
+    },
+    description: SITE_DESCRIPTION,
+    applicationName: SITE_NAME,
+    keywords: [
+      "population",
+      "population projection",
+      "world population",
+      "country population by year",
+      "World Population Prospects",
+      "United Nations population",
+      "World Bank population",
+    ],
+    category: "reference",
+    robots: { index: true, follow: true },
+    alternates: { canonical: "/" },
+    openGraph: {
+      type: "website",
+      locale: "en_US",
+      siteName: SITE_NAME,
+      title: SITE_TITLE,
+      description: SITE_DESCRIPTION,
+      url: "/",
+      images: [{ url: "/og", width: OG_WIDTH, height: OG_HEIGHT, alt: OG_ALT }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: SITE_TITLE,
+      description: SITE_DESCRIPTION,
+      images: [{ url: "/og", width: OG_WIDTH, height: OG_HEIGHT, alt: OG_ALT }],
+    },
+  };
+}
+
+export const viewport: Viewport = {
+  themeColor: "#070b12",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const origin = await siteUrl();
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: SITE_NAME,
+    url: origin.origin,
+    description: SITE_DESCRIPTION,
+  };
   return (
     <html lang="en" className={`dark ${geistMono.variable}`}>
       <body>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         <div className="relative z-10 flex min-h-screen flex-col">
           <header className="border-b border-border/80">
             <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-4 py-4 sm:px-6">
